@@ -1,18 +1,17 @@
 package com.bezkoder.spring.jwt.mongodb.models;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
+
 @Document(collection = "users")
-public class User {
+public class UserData {
   @Id
   private String id;
 
@@ -41,13 +40,12 @@ public class User {
   @DBRef
   private Set<Role> roles = new HashSet<>();
 
-  public User() {
+  public UserData() {
   }
 
-  public User(String username, String email, String password, String bio, String profileImageUrl) {
+  public UserData(String username, String email, String password, String bio, String profileImageUrl) {
     this.username = username;
     this.email = email;
-    this.password = password;
     this.bio = bio;
     this.profileImageUrl = profileImageUrl;
   }
